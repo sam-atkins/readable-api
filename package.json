@@ -1,0 +1,39 @@
+{
+  "name": "readable-api",
+  "version": "2.0.0",
+  "description": "Improved API for Readable app",
+  "main": "./api/start.js",
+  "scripts": {
+    "start": "nodemon ./api/start.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubiio/readable-api.git"
+  },
+  "keywords": ["api", "node", "express", "mongodb", "readable"],
+  "author": "sam atkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cubiio/readable-api/issues"
+  },
+  "homepage": "https://github.com/cubiio/readable-api#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "nodemon": "^1.17.1",
+    "prettier": "^1.11.1"
+  }
+}
