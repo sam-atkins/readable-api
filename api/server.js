@@ -8,6 +8,7 @@ mongoose.connection.on('error', err => {
 });
 
 // TODO import all models
+require('./models/Category');
 
 const app = require('./app');
 
