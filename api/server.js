@@ -7,8 +7,8 @@ mongoose.connection.on('error', err => {
   console.error(`👎  🚫  ⚠️  → ${err.message}`);
 });
 
-// TODO import all models
 require('./models/Category');
+require('./models/Post');
 
 const app = require('./app');
 
