@@ -9,6 +9,7 @@ mongoose.connection.on('error', err => {
 
 require('./models/Category');
 require('./models/Post');
+require('./models/Comment');
 
 const app = require('./app');
 

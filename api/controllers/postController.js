@@ -42,3 +42,35 @@ exports.deletePost = async (req, res) => {
     res.status(400).send('Bad Request');
   }
 };
+
+exports.voteDownPost = async (req, res) => {
+  try {
+    const post = await Post.findOneAndUpdate(
+      { _id: req.params.id },
+      { $inc: { voteScore: -1 } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(400).send('Bad Request');
+  }
+};
+
+exports.voteUpPost = async (req, res) => {
+  try {
+    const post = await Post.findOneAndUpdate(
+      { _id: req.params.id },
+      { $inc: { voteScore: +1 } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(400).send('Bad Request');
+  }
+};
