@@ -37,6 +37,17 @@ Development is in progress:
 
 ### Installation
 
+```
+# git clone the repo
+
+# from the project folder, install dependencies
+npm install
+```
+
+You will need a MongoDb database - one good option is [mLab](https://mlab.com/welcome/).
+
+Convert the file `.env.sample` to `.env` and update `DATABASE=mongodb://user:pass@host.com:port/database` with your MongoDb credentials.
+
 ## Develop
 
 ### How to run
