@@ -1,11 +1,21 @@
 const mongoose = require('mongoose');
+const postController = require('./postController');
 
 const Comment = mongoose.model('Comment');
 
 exports.addComment = async (req, res) => {
   try {
-    const comment = await new Comment(req.body).save();
-    res.status(200).json(comment);
+    const commentToSave = {
+      ...req.body,
+      deleted: false,
+      parentDeleted: false,
+    };
+    const commentPromise = new Comment(commentToSave).save();
+    const incCommentCountPromise = postController.incrementCommentCount(
+      req.body.parentId
+    );
+    const result = await Promise.all([commentPromise, incCommentCountPromise]);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).send('Bad Request');
   }
@@ -13,10 +23,14 @@ exports.addComment = async (req, res) => {
 
 exports.deleteComment = async (req, res) => {
   try {
-    const comment = await Comment.findOneAndRemove({
+    const commentPromise = Comment.findOneAndRemove({
       _id: req.params.id,
     }).exec();
-    res.status(200).json(comment);
+    const decCommentCountPromise = postController.decrementCommentCount(
+      req.body.parentId
+    );
+    const result = await Promise.all([commentPromise, decCommentCountPromise]);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).send('Bad Request');
   }

@@ -1,6 +1,12 @@
-const base64Decode = string => {
+/**
+ * Takes the clientAuthCode, decodes to ascii and confirms
+ * it matches AUTH_HEADERS
+ * @param {string} clientAuthCode
+ * @returns {bool} auth
+ */
+const base64Decode = clientAuthCode => {
   let auth = false;
-  const decodedBuffer = Buffer.from(string, 'base64').toString('ascii');
+  const decodedBuffer = Buffer.from(clientAuthCode, 'base64').toString('ascii');
   if (process.env.AUTH_HEADERS === decodedBuffer) {
     auth = true;
   }
