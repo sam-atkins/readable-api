@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const logger = require('./handlers/logger');
+const logger = require('./utils/logger');
 const auth = require('./handlers/auth');
 const routes = require('./routes/index');
 

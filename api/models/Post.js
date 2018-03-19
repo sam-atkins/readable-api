@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slug = require('slugs');
 
 mongoose.Promise = global.Promise;
 
@@ -8,6 +9,7 @@ const postSchema = new mongoose.Schema({
     trim: true,
     required: 'Please enter a title name',
   },
+  slug: String,
   body: {
     type: String,
     trim: true,
@@ -35,6 +37,15 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+postSchema.pre('save', async function preSchemaSaveHook(next) {
+  if (!this.isModified('title')) {
+    next(); // skip it
+    return; // stop this function from running
+  }
+  this.slug = slug(this.title);
+  next();
 });
 
 module.exports = mongoose.model('Post', postSchema);
