@@ -8,7 +8,7 @@ exports.getPosts = async (req, res) => {
     const posts = await Post.find();
     res.status(200).json(posts);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -23,7 +23,7 @@ exports.addPost = async (req, res) => {
     const post = await new Post(postToSave).save();
     res.status(200).json(post);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -35,7 +35,7 @@ exports.editPost = async (req, res) => {
     }).exec();
     res.status(200).json(post);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -66,7 +66,7 @@ exports.deletePost = async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -82,7 +82,7 @@ exports.voteDownPost = async (req, res) => {
     ).exec();
     res.status(200).json(post);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -98,7 +98,7 @@ exports.voteUpPost = async (req, res) => {
     ).exec();
     res.status(200).json(post);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 

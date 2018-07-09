@@ -15,6 +15,7 @@ Development is in progress:
 * [x] Add endpoints for managing comments
 * [ ] Add endpoints for managing users
 * [x] Add API endpoint documentation
+* [x] Add Docker
 * [ ] Unit tests
 * [ ] Set-up CI
 * [ ] Add graphQL?
@@ -35,18 +36,24 @@ Development is in progress:
 
 ## Getting started
 
+### Prerequisites
+
+* Docker
+* MongoDb database - one good option is [mLab](https://mlab.com/welcome/).
+
 ### Installation
 
-```
-# git clone the repo
-
-# from the project folder, install dependencies
-npm install
-```
-
-You will need a MongoDb database - one good option is [mLab](https://mlab.com/welcome/).
+Git clone the repo.
 
 Convert the file `.env.sample` to `.env` and update `DATABASE=mongodb://user:pass@host.com:port/database` with your MongoDb credentials.
+
+Add an Authorization header username and password in the `.env` file e.g. `AUTH_HEADERS=admin:TOPSECRET`.
+
+From the project folder, run Docker to build the container:
+
+```
+docker-compose build
+```
 
 ## Develop
 
@@ -55,7 +62,7 @@ Convert the file `.env.sample` to `.env` and update `DATABASE=mongodb://user:pas
 To run the local server:
 
 ```sh
-npm start
+docker-compose up
 ```
 
 ### Using the API Server

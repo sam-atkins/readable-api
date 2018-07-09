@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  readable-api:
+    image: readable-api
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 7777:7777
+    volumes:
+    - .:/src/

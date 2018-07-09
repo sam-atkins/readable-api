@@ -17,7 +17,7 @@ exports.addComment = async (req, res) => {
     const result = await Promise.all([commentPromise, incCommentCountPromise]);
     res.status(200).json(result);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -32,7 +32,7 @@ exports.deleteComment = async (req, res) => {
     const result = await Promise.all([commentPromise, decCommentCountPromise]);
     res.status(200).json(result);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -48,7 +48,7 @@ exports.editComment = async (req, res) => {
     ).exec();
     res.status(200).json(post);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -57,7 +57,7 @@ exports.getComments = async (req, res) => {
     const comments = await Comment.find({ parentId: req.params.id }).exec();
     res.status(200).json(comments);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -73,7 +73,7 @@ exports.voteDownComment = async (req, res) => {
     ).exec();
     res.status(200).json(comment);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
 
@@ -89,6 +89,6 @@ exports.voteUpComment = async (req, res) => {
     ).exec();
     res.status(200).json(comment);
   } catch (error) {
-    res.status(400).send('Bad Request');
+    res.status(400).json(error);
   }
 };
