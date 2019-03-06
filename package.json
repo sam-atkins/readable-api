@@ -11,7 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/cubiio/readable-api.git"
   },
-  "keywords": ["api", "node", "express", "mongodb", "readable"],
+  "keywords": [
+    "api",
+    "node",
+    "express",
+    "mongodb",
+    "readable"
+  ],
   "author": "sam atkins",
   "license": "MIT",
   "bugs": {
@@ -21,7 +27,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "dotenv": "^5.0.1",
+    "dotenv": "^6.2.0",
     "express": "^4.16.2",
     "mongoose": "^5.0.8",
     "morgan": "^1.9.0",
